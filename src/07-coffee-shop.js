@@ -32,4 +32,47 @@
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
   // Your code here
+  let basePrice;
+  switch (size) {
+    case "small":
+      basePrice = 3.00;
+      break;
+    case "medium":
+      basePrice = 4.00;
+      break;
+    case "large":
+      basePrice = 5.00;
+      break;
+    default:
+      return -1;
+  }
+
+  let typePrice;
+  switch (type) {
+    case "regular":
+      typePrice = 0.00;
+      break;
+    case "latte":
+      typePrice = 1.00;
+      break;
+    case "cappuccino":
+      typePrice = 1.50;
+      break;
+    case "mocha":
+      typePrice = 2.00;
+      break;
+    default:
+      return -1;
+  }
+
+  let extraCost = 0;
+  if (extras.whippedCream) {
+    extraCost += 0.50;
+  }
+  if (extras.extraShot) {
+    extraCost += 0.75;
+  }
+
+  return Math.round((basePrice + typePrice + extraCost) * 100) / 100;
+  
 }
